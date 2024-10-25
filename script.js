@@ -3,10 +3,10 @@ $('#submitDay').on("click", function() {
       url: `https://api.npoint.io/f1e229f2bd42717c2eee`, 
       method: 'GET',
       success: function(data){
-        renderHTML(data)
-        if (pageCounter > 3) {
-          btn.addClass("hide-me")
-        }
+        const schedule = data.schedule
+        const daySchedule = schedule.filter(item => 
+            item.days.includes(selectedDay)
+        )
       },
       error: function() {
         console.log('Connection error')
