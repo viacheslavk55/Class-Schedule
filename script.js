@@ -12,20 +12,16 @@ $('#submitDay').on("click", function() {
         console.log('Connection error')
       }
     })
+    // Function to filter classes for a specific day
+    function getClassesForDay(day) {
+      return schedule.filter(classInfo => classInfo.days.includes(day));
+    }
+
+    // Example usage: Get classes for 'A' day
+    const aDayClasses = getClassesForDay('A');
+    console.log(aDayClasses);
+
+    
+    
 })
 
-function renderHTML(data) {
-    let htmlString = ''
-    data.forEach(function(animal){
-      htmlString+= `<p>${animal.name} is a ${animal.species} that likes to eat`
-      animal.foods.likes.forEach(function(like, index){
-        htmlString += index === 0 ? like: ` and ${like}`
-      })
-      htmlString += ' and dislikes '
-      animal.foods.dislikes.forEach(function(dislike, index){
-        htmlString += index === 0 ? dislike: ` and ${dislike}`
-      })
-      htmlString += '.</p>'
-    })
-    animalContainer.append(htmlString)
-  }
